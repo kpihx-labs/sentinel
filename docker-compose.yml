@@ -1,0 +1,21 @@
+services:
+  sentinel:
+    build: .
+    container_name: sentinel
+    restart: unless-stopped
+    # to allow the container to access all process in the docker-host
+    pid: host
+    networks:
+      - proxy
+    env_file:
+      - .env
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.sentinel.rule=Host(`sentinel.homelab`)"
+      - "traefik.http.routers.sentinel.entrypoints=websecure"
+      - "traefik.http.routers.sentinel.tls=true"
+      - "traefik.http.routers.sentinel.middlewares=auth"
+
+networks:
+  proxy:
+    external: true
