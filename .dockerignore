@@ -1,0 +1,32 @@
+# Don't send git history or local env
+.git
+.gitignore
+
+# Secrets
+.env
+
+# Python build / caches
+__pycache__/
+*.py[cod]
+*.egg-info
+pip-wheel-metadata/
+venv/
+.env.d/
+.env.local
+.env.* 
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+
+# Test / coverage
+.pytest_cache/
+.mypy_cache/
+.coverage
+
+# Build artifacts
+build/
+dist/
+.cache/
+*.log
