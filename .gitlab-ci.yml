@@ -32,7 +32,7 @@ sync_github:
   stage: sync
   variables:
     GITHUB_ORG: "kpihx-labs"
-    REPO_NAME: "wa-bot"
+    REPO_NAME: "sentinel"
   only:
     - main
   script:
