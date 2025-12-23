@@ -36,8 +36,7 @@ sync_github:
   only:
     - main
   script:
-    - echo "🔄 Synchronisation vers GitHub..."
-    # Appel à l'API GitHub pour créer le repo (ignorera si déjà présent grâce au "|| true")
+    - echo "🔍 Vérification/Création du repo sur GitHub..."
     - |
       curl -H "Authorization: token ${GITHUB_TOKEN}" \
            -X POST \
@@ -45,5 +44,8 @@ sync_github:
            https://api.github.com/orgs/${GITHUB_ORG}/repos || true
     
     - echo "🔄 Synchronisation..."
+    # On s'assure que le remote est bien configuré
     - git remote add github https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_ORG}/${REPO_NAME}.git || git remote set-url github https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_ORG}/${REPO_NAME}.git
-    - git push github main --force
+    
+    # Correction ici : on pousse explicitement le SHA actuel vers la branche main distante
+    - git push github $CI_COMMIT_SHA:refs/heads/main --force
