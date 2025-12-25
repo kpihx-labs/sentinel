@@ -11,10 +11,14 @@ services:
       - .env
     labels:
       - "traefik.enable=true"
+
       - "traefik.http.routers.sentinel.rule=Host(`sentinel.homelab`)"
       - "traefik.http.routers.sentinel.entrypoints=web,websecure"
       - "traefik.http.routers.sentinel.tls=true"
       - "traefik.http.routers.sentinel.middlewares=auth"
+
+      - "traefik.http.routers.sentinel.service=sentinel"
+      - "traefik.http.services.sentinel.loadbalancer.server.port=8501"
 
 networks:
   proxy:
