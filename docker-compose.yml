@@ -9,16 +9,24 @@ services:
       - proxy
     env_file:
       - .env
+
     labels:
       - "traefik.enable=true"
 
+      # --- Accès interne (HTTP + HTTPS) ---
       - "traefik.http.routers.sentinel.rule=Host(`sentinel.homelab`)"
-      - "traefik.http.routers.sentinel.entrypoints=web,websecure"
+      - "traefik.http.routers.sentinel.entrypoints=websecure"
       - "traefik.http.routers.sentinel.tls=true"
       - "traefik.http.routers.sentinel.middlewares=auth"
 
+      # --- Service interne ---
       - "traefik.http.routers.sentinel.service=sentinel"
       - "traefik.http.services.sentinel.loadbalancer.server.port=8501"
+
+      # --- Accès public via Tailscale Funnel ---
+      - "traefik.http.routers.sentinel-funnel.rule=Host(`sentinel.homelab`)"
+      - "traefik.http.routers.sentinel-funnel.entrypoints=funnel-sentinel"
+      - "traefik.http.routers.sentinel-funnel.tls=false"
 
 networks:
   proxy:
