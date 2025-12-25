@@ -24,9 +24,9 @@ services:
       - "traefik.http.services.sentinel.loadbalancer.server.port=8501"
 
       # --- Accès public via Tailscale Funnel ---
-      - "traefik.http.routers.sentinel-funnel.rule=Host(`sentinel.homelab`)"
-      - "traefik.http.routers.sentinel-funnel.entrypoints=funnel-sentinel"
-      - "traefik.http.routers.sentinel-funnel.tls=false"
+      # - "traefik.http.routers.sentinel-funnel.rule=Host(`sentinel.homelab`)"
+      # - "traefik.http.routers.sentinel-funnel.entrypoints=funnel-sentinel"
+      # - "traefik.http.routers.sentinel-funnel.tls=false"
 
 networks:
   proxy:
