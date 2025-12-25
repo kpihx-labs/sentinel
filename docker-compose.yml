@@ -14,7 +14,7 @@ services:
       - "traefik.enable=true"
 
       # --- Accès interne (HTTP + HTTPS) ---
-      - "traefik.http.routers.sentinel.rule=Host(`sentinel.homelab`)"
+      - "traefik.http.routers.sentinel.rule=Host(`sentinel.homelab`) || Host(`sentinel.kpihx-labs.com`)"
       - "traefik.http.routers.sentinel.entrypoints=websecure"
       - "traefik.http.routers.sentinel.tls=true"
       - "traefik.http.routers.sentinel.middlewares=auth"
