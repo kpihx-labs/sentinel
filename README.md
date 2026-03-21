@@ -17,7 +17,7 @@ Petit service de surveillance (monitoring) léger qui exécute des contrôles p�
 ## Prérequis
 - Python 3.10+ recommandé.
 - Docker & docker-compose pour exécution conteneurisée.
-- Un token pour un bot Telegram et un `CHAT_ID` pour recevoir les alertes.
+- Un token pour un bot Telegram et un `TELEGRAM_CHAT_ID` pour recevoir les alertes.
 
 ## Installation (local)
 1. Cloner le dépôt :
@@ -35,7 +35,7 @@ Petit service de surveillance (monitoring) léger qui exécute des contrôles p�
 	 - Copier l'exemple et remplir les valeurs :
 		 ```bash
 		 cp .env.example .env
-		 # Éditer .env et renseigner TELEGRAM_TOKEN et CHAT_ID
+		 # Éditer .env et renseigner TELEGRAM_TOKEN et TELEGRAM_CHAT_ID
 		 ```
 	 - S'assurer que `.env` est ignoré par git (ne pas committer les secrets) :
 		 ```bash
@@ -52,12 +52,12 @@ Petit service de surveillance (monitoring) léger qui exécute des contrôles p�
 Remplir `.env` (ou utiliser un secret manager) avec les variables suivantes :
 
 - `TELEGRAM_TOKEN` — token du bot Telegram.
-- `CHAT_ID` — identifiant du chat destinataire des alertes.
+- `TELEGRAM_CHAT_ID` — identifiant du chat destinataire des alertes.
 
 Exemple minimal (fichier `.env.example` fourni) :
 ```
 TELEGRAM_TOKEN=your_telegram_bot_token_here
-CHAT_ID=your_chat_id_here
+TELEGRAM_CHAT_ID=your_chat_id_here
 ```
 
 ## Docker
@@ -93,4 +93,3 @@ CHAT_ID=your_chat_id_here
 Badge de licence :
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
-

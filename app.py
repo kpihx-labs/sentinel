@@ -14,7 +14,7 @@ from datetime import datetime
 st.set_page_config(page_title="Sentinel", page_icon="🛡️", layout="wide")
 
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
-CHAT_ID = os.getenv("CHAT_ID")
+TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 
 # Seuils d'alerte (Tu peux les baisser à 10% pour tester l'envoi)
 CPU_LIMIT = 80
@@ -35,7 +35,7 @@ def get_timestamp():
 
 def send_telegram_alert(message):
     """Envoie le message à ton téléphone via l'API Telegram."""
-    if not TELEGRAM_TOKEN or not CHAT_ID:
+    if not TELEGRAM_TOKEN or not TELEGRAM_CHAT_ID:
         st.warning("⚠️ Configuration Telegram manquante dans le .env")
         return
     
@@ -44,7 +44,7 @@ def send_telegram_alert(message):
     timestamp = get_timestamp()
     clean_message = f"🚨 **ALERTE SENTINEL** [{timestamp}] 🚨\n\n{message}"
     
-    payload = {"chat_id": CHAT_ID, "text": clean_message}
+    payload = {"chat_id": TELEGRAM_CHAT_ID, "text": clean_message}
     
     try:
         # Streamlit utilise le proxy du système automatiquement s'il est défini
