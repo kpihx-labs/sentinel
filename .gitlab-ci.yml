@@ -12,8 +12,8 @@ deploy_homelab:
     - echo "🚀 Démarrage du déploiement sur le Homelab..."
     
     # 1. On recrée le fichier .env avec les secrets stockés dans GitLab
-      - echo "TELEGRAM_HOMELAB_TOKEN=$TELEGRAM_HOMELAB_TOKEN" >> .env
-      - echo "TELEGRAM_CHAT_IDS=$TELEGRAM_CHAT_IDS" >> .env
+    - echo "TELEGRAM_HOMELAB_TOKEN=$TELEGRAM_HOMELAB_TOKEN" >> .env
+    - echo "TELEGRAM_CHAT_IDS=$TELEGRAM_CHAT_IDS" >> .env
     
     # On ajoute le proxy (hérité des variables de groupe si configuré, sinon on le force ici par sécurité)
     # - echo "http_proxy=http://129.104.201.11:8080" >> .env
